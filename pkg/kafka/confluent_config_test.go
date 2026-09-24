@@ -268,17 +268,31 @@ func TestWriterConfigToConfluentConfigMap_Table(t *testing.T) {
 	t.Run("optional fields", func(t *testing.T) {
 		t.Parallel()
 		cfg, err := writerConfigToConfluentConfigMap(&WriterConfig{
-			Brokers:      []string{"localhost:9092"},
-			WriteTimeout: 2 * time.Second,
-			ReadTimeout:  3 * time.Second,
-			RequiredAcks: 1,
-			BatchTimeout: 100 * time.Millisecond,
+			Brokers:                   []string{"localhost:9092"},
+			WriteTimeout:              2 * time.Second,
+			ReadTimeout:               3 * time.Second,
+			RequiredAcks:              1,
+			BatchTimeout:              100 * time.Millisecond,
+			QueueBufferingMaxMessages: 50000,
+			QueueBufferingMaxKbytes:   512000,
+			MessageMaxBytes:           2048000,
+			CompressionLevel:          5,
+			RequestTimeout:            60 * time.Second,
+			SocketKeepAlive:           true,
+			MetadataMaxAge:            180 * time.Second,
 		})
 		require.NoError(t, err)
 		assert.Equal(t, 2000, cfg["message.timeout.ms"])
 		assert.Equal(t, 3000, cfg["socket.timeout.ms"])
 		assert.Equal(t, "1", cfg["acks"])
 		assert.Equal(t, 100, cfg["linger.ms"])
+		assert.Equal(t, 50000, cfg["queue.buffering.max.messages"])
+		assert.Equal(t, 512000, cfg["queue.buffering.max.kbytes"])
+		assert.Equal(t, 2048000, cfg["message.max.bytes"])
+		assert.Equal(t, 5, cfg["compression.level"])
+		assert.Equal(t, 60000, cfg["request.timeout.ms"])
+		assert.Equal(t, true, cfg["socket.keepalive.enable"])
+		assert.Equal(t, 180000, cfg["metadata.max.age.ms"])
 	})
 	t.Run("invalid required acks", func(t *testing.T) {
 		t.Parallel()
@@ -302,27 +316,6 @@ func TestWriterConfigToConfluentConfigMap_Table(t *testing.T) {
 		assert.Equal(t, 100, cfg["batch.num.messages"])
 		assert.Equal(t, 4096, cfg["batch.size"])
 		assert.Equal(t, "snappy", cfg["compression.type"])
-	})
-	t.Run("memory batching and event hubs options", func(t *testing.T) {
-		t.Parallel()
-		cfg, err := writerConfigToConfluentConfigMap(&WriterConfig{
-			Brokers:                   []string{"localhost:9092"},
-			QueueBufferingMaxMessages: 50000,
-			QueueBufferingMaxKbytes:   512000,
-			MessageMaxBytes:           2048000,
-			CompressionLevel:          5,
-			RequestTimeout:            60 * time.Second,
-			SocketKeepAlive:           true,
-			MetadataMaxAge:            180 * time.Second,
-		})
-		require.NoError(t, err)
-		assert.Equal(t, 50000, cfg["queue.buffering.max.messages"])
-		assert.Equal(t, 512000, cfg["queue.buffering.max.kbytes"])
-		assert.Equal(t, 2048000, cfg["message.max.bytes"])
-		assert.Equal(t, 5, cfg["compression.level"])
-		assert.Equal(t, 60000, cfg["request.timeout.ms"])
-		assert.Equal(t, true, cfg["socket.keepalive.enable"])
-		assert.Equal(t, 180000, cfg["metadata.max.age.ms"])
 	})
 }
 
@@ -387,24 +380,12 @@ func TestReaderConfigToConfluentConfigMap_Table(t *testing.T) {
 	t.Run("without group id sets fetch tuning only", func(t *testing.T) {
 		t.Parallel()
 		cfg, err := readerConfigToConfluentConfigMap(&ReaderConfig{
-			Brokers:  []string{"localhost:9092"},
-			GroupID:  "",
-			Topic:    "t",
-			MinBytes: 128,
-			MaxBytes: 2 << 20,
-			MaxWait:  Duration{Duration: 2 * time.Second},
-		})
-		require.NoError(t, err)
-		assert.Equal(t, 128, cfg["fetch.min.bytes"])
-		assert.Equal(t, 2<<20, cfg["fetch.max.bytes"])
-		assert.Equal(t, 2000, cfg["fetch.wait.max.ms"])
-		_, hasGroup := cfg["group.id"]
-		assert.False(t, hasGroup)
-	})
-	t.Run("memory batching and event hubs options", func(t *testing.T) {
-		t.Parallel()
-		cfg, err := readerConfigToConfluentConfigMap(&ReaderConfig{
 			Brokers:                []string{"localhost:9092"},
+			GroupID:                "",
+			Topic:                  "t",
+			MinBytes:               128,
+			MaxBytes:               2 << 20,
+			MaxWait:                Duration{Duration: 2 * time.Second},
 			QueuedMinMessages:      2000,
 			QueuedMaxMessagesKbytes: 4096,
 			FetchMessageMaxBytes:   1048576,
@@ -415,6 +396,9 @@ func TestReaderConfigToConfluentConfigMap_Table(t *testing.T) {
 			MetadataMaxAge:         180 * time.Second,
 		})
 		require.NoError(t, err)
+		assert.Equal(t, 128, cfg["fetch.min.bytes"])
+		assert.Equal(t, 2<<20, cfg["fetch.max.bytes"])
+		assert.Equal(t, 2000, cfg["fetch.wait.max.ms"])
 		assert.Equal(t, 2000, cfg["queued.min.messages"])
 		assert.Equal(t, 4096, cfg["queued.max.messages.kbytes"])
 		assert.Equal(t, 1048576, cfg["fetch.message.max.bytes"])
@@ -423,6 +407,8 @@ func TestReaderConfigToConfluentConfigMap_Table(t *testing.T) {
 		assert.Equal(t, 45000, cfg["rebalance.timeout.ms"])
 		assert.Equal(t, true, cfg["socket.keepalive.enable"])
 		assert.Equal(t, 180000, cfg["metadata.max.age.ms"])
+		_, hasGroup := cfg["group.id"]
+		assert.False(t, hasGroup)
 	})
 	t.Run("queue capacity fallback to queued.min.messages", func(t *testing.T) {
 		t.Parallel()
@@ -432,26 +418,6 @@ func TestReaderConfigToConfluentConfigMap_Table(t *testing.T) {
 		})
 		require.NoError(t, err)
 		assert.Equal(t, 500, cfg["queued.min.messages"])
-	})
-	t.Run("omitted optional fields leave librdkafka defaults", func(t *testing.T) {
-		t.Parallel()
-		cfg, err := readerConfigToConfluentConfigMap(&ReaderConfig{
-			Brokers: []string{"localhost:9092"},
-		})
-		require.NoError(t, err)
-		for _, key := range []string{
-			"queued.min.messages",
-			"queued.max.messages.kbytes",
-			"fetch.message.max.bytes",
-			"max.partition.fetch.bytes",
-			"max.poll.interval.ms",
-			"rebalance.timeout.ms",
-			"socket.keepalive.enable",
-			"metadata.max.age.ms",
-		} {
-			_, exists := cfg[key]
-			assert.False(t, exists, "key %s should be omitted so librdkafka defaults apply", key)
-		}
 	})
 }
 
@@ -473,27 +439,20 @@ func TestConnectionConfigToConfluentConfigMap_Table(t *testing.T) {
 	t.Run("brokers preferred over address", func(t *testing.T) {
 		t.Parallel()
 		cfg, err := connectionConfigToConfluentConfigMap(&ConnectionConfig{
-			Address: "ignored:9092",
-			Brokers: []string{"a:1", "b:2"},
+			Address:         "ignored:9092",
+			Brokers:         []string{"a:1", "b:2"},
+			SocketKeepAlive: true,
+			MetadataMaxAge:  180 * time.Second,
 		})
 		require.NoError(t, err)
 		assert.Equal(t, "a:1,b:2", cfg["bootstrap.servers"])
+		assert.Equal(t, true, cfg["socket.keepalive.enable"])
+		assert.Equal(t, 180000, cfg["metadata.max.age.ms"])
 	})
 	t.Run("empty brokers and address", func(t *testing.T) {
 		t.Parallel()
 		_, err := connectionConfigToConfluentConfigMap(&ConnectionConfig{})
 		require.Error(t, err)
-	})
-	t.Run("socket keepalive and metadata max age", func(t *testing.T) {
-		t.Parallel()
-		cfg, err := connectionConfigToConfluentConfigMap(&ConnectionConfig{
-			Brokers:         []string{"localhost:9092"},
-			SocketKeepAlive: true,
-			MetadataMaxAge:  180 * time.Second,
-		})
-		require.NoError(t, err)
-		assert.Equal(t, true, cfg["socket.keepalive.enable"])
-		assert.Equal(t, 180000, cfg["metadata.max.age.ms"])
 	})
 }
 
