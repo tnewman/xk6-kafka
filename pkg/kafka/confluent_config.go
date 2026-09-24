@@ -226,12 +226,20 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 		}
 	}
 	if writerConfig.QueueBufferingMaxMessages > 0 {
-		if err := setConfluentConfigValue(config, "queue.buffering.max.messages", writerConfig.QueueBufferingMaxMessages); err != nil {
+		if err := setConfluentConfigValue(
+			config,
+			"queue.buffering.max.messages",
+			writerConfig.QueueBufferingMaxMessages,
+		); err != nil {
 			return nil, err
 		}
 	}
 	if writerConfig.QueueBufferingMaxKbytes > 0 {
-		if err := setConfluentConfigValue(config, "queue.buffering.max.kbytes", writerConfig.QueueBufferingMaxKbytes); err != nil {
+		if err := setConfluentConfigValue(
+			config,
+			"queue.buffering.max.kbytes",
+			writerConfig.QueueBufferingMaxKbytes,
+		); err != nil {
 			return nil, err
 		}
 	}
@@ -335,17 +343,29 @@ func readerConfigToConfluentConfigMap(readerConfig *ReaderConfig) (ckafka.Config
 		}
 	}
 	if readerConfig.QueuedMaxMessagesKbytes > 0 {
-		if err := setConfluentConfigValue(config, "queued.max.messages.kbytes", readerConfig.QueuedMaxMessagesKbytes); err != nil {
+		if err := setConfluentConfigValue(
+			config,
+			"queued.max.messages.kbytes",
+			readerConfig.QueuedMaxMessagesKbytes,
+		); err != nil {
 			return nil, err
 		}
 	}
 	if readerConfig.FetchMessageMaxBytes > 0 {
-		if err := setConfluentConfigValue(config, "fetch.message.max.bytes", readerConfig.FetchMessageMaxBytes); err != nil {
+		if err := setConfluentConfigValue(
+			config,
+			"fetch.message.max.bytes",
+			readerConfig.FetchMessageMaxBytes,
+		); err != nil {
 			return nil, err
 		}
 	}
 	if readerConfig.MaxPartitionFetchBytes > 0 {
-		if err := setConfluentConfigValue(config, "max.partition.fetch.bytes", readerConfig.MaxPartitionFetchBytes); err != nil {
+		if err := setConfluentConfigValue(
+			config,
+			"max.partition.fetch.bytes",
+			readerConfig.MaxPartitionFetchBytes,
+		); err != nil {
 			return nil, err
 		}
 	}
