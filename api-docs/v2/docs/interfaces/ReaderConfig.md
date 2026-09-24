@@ -4,7 +4,7 @@
 
 # Interface: ReaderConfig
 
-Defined in: [index.d.ts:192](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L192)
+Defined in: [index.d.ts:199](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L199)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [index.d.ts:192](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **brokers**: `string`[]
 
-Defined in: [index.d.ts:193](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L193)
+Defined in: [index.d.ts:200](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L200)
 
 ---
 
@@ -20,7 +20,7 @@ Defined in: [index.d.ts:193](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **commitInterval**: `number`
 
-Defined in: [index.d.ts:208](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L208)
+Defined in: [index.d.ts:221](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L221)
 
 ---
 
@@ -28,7 +28,15 @@ Defined in: [index.d.ts:208](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **connectLogger**: `boolean`
 
-Defined in: [index.d.ts:218](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L218)
+Defined in: [index.d.ts:231](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L231)
+
+---
+
+### fetchMessageMaxBytes?
+
+> `optional` **fetchMessageMaxBytes?**: `number`
+
+Defined in: [index.d.ts:211](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L211)
 
 ---
 
@@ -36,7 +44,7 @@ Defined in: [index.d.ts:218](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **groupBalancers**: [`GROUP_BALANCERS`](../enumerations/GROUP_BALANCERS.md)[]
 
-Defined in: [index.d.ts:206](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L206)
+Defined in: [index.d.ts:219](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L219)
 
 ---
 
@@ -44,7 +52,7 @@ Defined in: [index.d.ts:206](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **groupId**: `string`
 
-Defined in: [index.d.ts:194](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L194)
+Defined in: [index.d.ts:201](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L201)
 
 ---
 
@@ -52,7 +60,7 @@ Defined in: [index.d.ts:194](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > `optional` **groupID?**: `string`
 
-Defined in: [index.d.ts:196](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L196)
+Defined in: [index.d.ts:203](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L203)
 
 #### Deprecated
 
@@ -64,7 +72,7 @@ Use `groupId` instead.
 
 > **groupTopics**: `string`[]
 
-Defined in: [index.d.ts:197](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L197)
+Defined in: [index.d.ts:204](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L204)
 
 ---
 
@@ -72,7 +80,7 @@ Defined in: [index.d.ts:197](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **heartbeatInterval**: `number`
 
-Defined in: [index.d.ts:207](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L207)
+Defined in: [index.d.ts:220](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L220)
 
 ---
 
@@ -80,7 +88,7 @@ Defined in: [index.d.ts:207](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **isolationLevel**: [`ISOLATION_LEVEL`](../enumerations/ISOLATION_LEVEL.md)
 
-Defined in: [index.d.ts:220](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L220)
+Defined in: [index.d.ts:233](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L233)
 
 ---
 
@@ -88,7 +96,7 @@ Defined in: [index.d.ts:220](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **joinGroupBackoff**: `number`
 
-Defined in: [index.d.ts:213](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L213)
+Defined in: [index.d.ts:226](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L226)
 
 ---
 
@@ -96,7 +104,7 @@ Defined in: [index.d.ts:213](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **maxAttempts**: `number`
 
-Defined in: [index.d.ts:219](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L219)
+Defined in: [index.d.ts:232](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L232)
 
 ---
 
@@ -104,7 +112,23 @@ Defined in: [index.d.ts:219](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **maxBytes**: `number`
 
-Defined in: [index.d.ts:202](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L202)
+Defined in: [index.d.ts:214](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L214)
+
+---
+
+### maxPartitionFetchBytes?
+
+> `optional` **maxPartitionFetchBytes?**: `number`
+
+Defined in: [index.d.ts:212](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L212)
+
+---
+
+### maxPollInterval?
+
+> `optional` **maxPollInterval?**: `string` \| `number`
+
+Defined in: [index.d.ts:217](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L217)
 
 ---
 
@@ -112,7 +136,15 @@ Defined in: [index.d.ts:202](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **maxWait**: `string`
 
-Defined in: [index.d.ts:204](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L204)
+Defined in: [index.d.ts:216](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L216)
+
+---
+
+### metadataMaxAge?
+
+> `optional` **metadataMaxAge?**: `number`
+
+Defined in: [index.d.ts:236](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L236)
 
 ---
 
@@ -120,7 +152,7 @@ Defined in: [index.d.ts:204](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **minBytes**: `number`
 
-Defined in: [index.d.ts:201](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L201)
+Defined in: [index.d.ts:213](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L213)
 
 ---
 
@@ -128,7 +160,7 @@ Defined in: [index.d.ts:201](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **offset**: `number`
 
-Defined in: [index.d.ts:221](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L221)
+Defined in: [index.d.ts:234](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L234)
 
 ---
 
@@ -136,7 +168,7 @@ Defined in: [index.d.ts:221](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **partition**: `number`
 
-Defined in: [index.d.ts:199](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L199)
+Defined in: [index.d.ts:206](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L206)
 
 ---
 
@@ -144,15 +176,35 @@ Defined in: [index.d.ts:199](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **partitionWatchInterval**: `number`
 
-Defined in: [index.d.ts:209](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L209)
+Defined in: [index.d.ts:222](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L222)
 
 ---
 
-### queueCapacity
+### ~~queueCapacity?~~
 
-> **queueCapacity**: `number`
+> `optional` **queueCapacity?**: `number`
 
-Defined in: [index.d.ts:200](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L200)
+Defined in: [index.d.ts:208](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L208)
+
+#### Deprecated
+
+Use `queuedMinMessages` or `queuedMaxMessagesKbytes` instead.
+
+---
+
+### queuedMaxMessagesKbytes?
+
+> `optional` **queuedMaxMessagesKbytes?**: `number`
+
+Defined in: [index.d.ts:210](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L210)
+
+---
+
+### queuedMinMessages?
+
+> `optional` **queuedMinMessages?**: `number`
+
+Defined in: [index.d.ts:209](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L209)
 
 ---
 
@@ -160,7 +212,7 @@ Defined in: [index.d.ts:200](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **readBackoffMax**: `number`
 
-Defined in: [index.d.ts:217](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L217)
+Defined in: [index.d.ts:230](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L230)
 
 ---
 
@@ -168,7 +220,7 @@ Defined in: [index.d.ts:217](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **readBackoffMin**: `number`
 
-Defined in: [index.d.ts:216](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L216)
+Defined in: [index.d.ts:229](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L229)
 
 ---
 
@@ -176,7 +228,7 @@ Defined in: [index.d.ts:216](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **readBatchTimeout**: `number`
 
-Defined in: [index.d.ts:203](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L203)
+Defined in: [index.d.ts:215](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L215)
 
 ---
 
@@ -184,7 +236,7 @@ Defined in: [index.d.ts:203](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **readLagInterval**: `number`
 
-Defined in: [index.d.ts:205](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L205)
+Defined in: [index.d.ts:218](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L218)
 
 ---
 
@@ -192,7 +244,7 @@ Defined in: [index.d.ts:205](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **rebalanceTimeout**: `number`
 
-Defined in: [index.d.ts:212](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L212)
+Defined in: [index.d.ts:225](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L225)
 
 ---
 
@@ -200,7 +252,7 @@ Defined in: [index.d.ts:212](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **retentionTime**: `number`
 
-Defined in: [index.d.ts:214](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L214)
+Defined in: [index.d.ts:227](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L227)
 
 ---
 
@@ -208,7 +260,7 @@ Defined in: [index.d.ts:214](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **sasl**: [`SASLConfig`](SASLConfig.md)
 
-Defined in: [index.d.ts:222](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L222)
+Defined in: [index.d.ts:237](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L237)
 
 ---
 
@@ -216,7 +268,15 @@ Defined in: [index.d.ts:222](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **sessionTimeout**: `number`
 
-Defined in: [index.d.ts:211](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L211)
+Defined in: [index.d.ts:224](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L224)
+
+---
+
+### socketKeepAlive?
+
+> `optional` **socketKeepAlive?**: `boolean`
+
+Defined in: [index.d.ts:235](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L235)
 
 ---
 
@@ -224,7 +284,7 @@ Defined in: [index.d.ts:211](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **startOffset**: [`START_OFFSETS`](../enumerations/START_OFFSETS.md)
 
-Defined in: [index.d.ts:215](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L215)
+Defined in: [index.d.ts:228](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L228)
 
 ---
 
@@ -232,7 +292,7 @@ Defined in: [index.d.ts:215](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **tls**: [`TLSConfig`](TLSConfig.md)
 
-Defined in: [index.d.ts:223](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L223)
+Defined in: [index.d.ts:238](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L238)
 
 ---
 
@@ -240,7 +300,7 @@ Defined in: [index.d.ts:223](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **topic**: `string`
 
-Defined in: [index.d.ts:198](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L198)
+Defined in: [index.d.ts:205](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L205)
 
 ---
 
@@ -248,4 +308,4 @@ Defined in: [index.d.ts:198](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **watchPartitionChanges**: `boolean`
 
-Defined in: [index.d.ts:210](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L210)
+Defined in: [index.d.ts:223](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L223)
