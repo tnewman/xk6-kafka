@@ -37,43 +37,43 @@ var (
 const consumerSeekArgumentCount = 2
 
 type ReaderConfig struct {
-	WatchPartitionChanges  bool          `json:"watchPartitionChanges"`
-	ConnectLogger          bool          `json:"connectLogger"`
-	Partition              int           `json:"partition"`
-	QueueCapacity          int           `json:"queueCapacity"` // deprecated, do not use
-	QueuedMinMessages      int           `json:"queuedMinMessages"`
-	QueuedMaxMessagesKbytes int          `json:"queuedMaxMessagesKbytes"`
-	FetchMessageMaxBytes   int           `json:"fetchMessageMaxBytes"`
-	MaxPartitionFetchBytes int           `json:"maxPartitionFetchBytes"`
-	MinBytes               int           `json:"minBytes"`
-	MaxBytes               int           `json:"maxBytes"`
-	MaxAttempts            int           `json:"maxAttempts"`
-	GroupID                string        `json:"groupId"`
-	Topic                  string        `json:"topic"`
-	IsolationLevel         string        `json:"isolationLevel"`
-	StartOffset            string        `json:"startOffset"`
-	Offset                 int64         `json:"offset"`
-	Brokers                []string      `json:"brokers"`
-	GroupTopics            []string      `json:"groupTopics"`
-	GroupBalancers         []string      `json:"groupBalancers"`
-	MaxWait                Duration      `json:"maxWait"`
-	MaxPollInterval        Duration      `json:"maxPollInterval"`
-	ReadBatchTimeout       time.Duration `json:"readBatchTimeout"`
-	ReadLagInterval        time.Duration `json:"readLagInterval"`
-	HeartbeatInterval      time.Duration `json:"heartbeatInterval"`
-	CommitInterval         time.Duration `json:"commitInterval"`
-	PartitionWatchInterval time.Duration `json:"partitionWatchInterval"`
-	SessionTimeout         time.Duration `json:"sessionTimeout"`
-	RebalanceTimeout       time.Duration `json:"rebalanceTimeout"`
-	JoinGroupBackoff       time.Duration `json:"joinGroupBackoff"`
-	RetentionTime          time.Duration `json:"retentionTime"`
-	ReadBackoffMin         time.Duration `json:"readBackoffMin"`
-	ReadBackoffMax         time.Duration `json:"readBackoffMax"`
-	OffsetOutOfRangeError  bool          `json:"offsetOutOfRangeError"` // deprecated, do not use
-	SocketKeepAlive        bool          `json:"socketKeepAlive"`
-	MetadataMaxAge         time.Duration `json:"metadataMaxAge"`
-	SASL                   SASLConfig    `json:"sasl"`
-	TLS                    TLSConfig     `json:"tls"`
+	WatchPartitionChanges   bool          `json:"watchPartitionChanges"`
+	ConnectLogger           bool          `json:"connectLogger"`
+	Partition               int           `json:"partition"`
+	QueueCapacity           int           `json:"queueCapacity"` // deprecated, do not use
+	QueuedMinMessages       int           `json:"queuedMinMessages"`
+	QueuedMaxMessagesKbytes int           `json:"queuedMaxMessagesKbytes"`
+	FetchMessageMaxBytes    int           `json:"fetchMessageMaxBytes"`
+	MaxPartitionFetchBytes  int           `json:"maxPartitionFetchBytes"`
+	MinBytes                int           `json:"minBytes"`
+	MaxBytes                int           `json:"maxBytes"`
+	MaxAttempts             int           `json:"maxAttempts"`
+	GroupID                 string        `json:"groupId"`
+	Topic                   string        `json:"topic"`
+	IsolationLevel          string        `json:"isolationLevel"`
+	StartOffset             string        `json:"startOffset"`
+	Offset                  int64         `json:"offset"`
+	Brokers                 []string      `json:"brokers"`
+	GroupTopics             []string      `json:"groupTopics"`
+	GroupBalancers          []string      `json:"groupBalancers"`
+	MaxWait                 Duration      `json:"maxWait"`
+	MaxPollInterval         Duration      `json:"maxPollInterval"`
+	ReadBatchTimeout        time.Duration `json:"readBatchTimeout"`
+	ReadLagInterval         time.Duration `json:"readLagInterval"`
+	HeartbeatInterval       time.Duration `json:"heartbeatInterval"`
+	CommitInterval          time.Duration `json:"commitInterval"`
+	PartitionWatchInterval  time.Duration `json:"partitionWatchInterval"`
+	SessionTimeout          time.Duration `json:"sessionTimeout"`
+	RebalanceTimeout        time.Duration `json:"rebalanceTimeout"`
+	JoinGroupBackoff        time.Duration `json:"joinGroupBackoff"`
+	RetentionTime           time.Duration `json:"retentionTime"`
+	ReadBackoffMin          time.Duration `json:"readBackoffMin"`
+	ReadBackoffMax          time.Duration `json:"readBackoffMax"`
+	OffsetOutOfRangeError   bool          `json:"offsetOutOfRangeError"` // deprecated, do not use
+	SocketKeepAlive         bool          `json:"socketKeepAlive"`
+	MetadataMaxAge          time.Duration `json:"metadataMaxAge"`
+	SASL                    SASLConfig    `json:"sasl"`
+	TLS                     TLSConfig     `json:"tls"`
 }
 
 type ConsumeConfig struct {
