@@ -380,24 +380,24 @@ func TestReaderConfigToConfluentConfigMap_Table(t *testing.T) {
 	t.Run("without group id sets fetch tuning only", func(t *testing.T) {
 		t.Parallel()
 		cfg, err := readerConfigToConfluentConfigMap(&ReaderConfig{
-			Brokers:                []string{"localhost:9092"},
-			GroupID:                "",
-			Topic:                  "t",
-			MinBytes:               128,
-			MaxBytes:               2 << 20,
-			MaxWait:                Duration{Duration: 2 * time.Second},
-			QueuedMinMessages:      2000,
+			Brokers:                 []string{"localhost:9092"},
+			GroupID:                 "",
+			Topic:                   "t",
+			MinBytes:                128,
+			MaxBytes:                2097152,
+			MaxWait:                 Duration{Duration: 2 * time.Second},
+			QueuedMinMessages:       2000,
 			QueuedMaxMessagesKbytes: 4096,
-			FetchMessageMaxBytes:   1048576,
-			MaxPartitionFetchBytes: 1048576,
-			MaxPollInterval:        Duration{Duration: 300 * time.Second},
-			RebalanceTimeout:       45 * time.Second,
-			SocketKeepAlive:        true,
-			MetadataMaxAge:         180 * time.Second,
+			FetchMessageMaxBytes:    1048576,
+			MaxPartitionFetchBytes:  1048576,
+			MaxPollInterval:         Duration{Duration: 300 * time.Second},
+			RebalanceTimeout:        45 * time.Second,
+			SocketKeepAlive:         true,
+			MetadataMaxAge:          180 * time.Second,
 		})
 		require.NoError(t, err)
 		assert.Equal(t, 128, cfg["fetch.min.bytes"])
-		assert.Equal(t, 2<<20, cfg["fetch.max.bytes"])
+		assert.Equal(t, 2097152, cfg["fetch.max.bytes"])
 		assert.Equal(t, 2000, cfg["fetch.wait.max.ms"])
 		assert.Equal(t, 2000, cfg["queued.min.messages"])
 		assert.Equal(t, 4096, cfg["queued.max.messages.kbytes"])
