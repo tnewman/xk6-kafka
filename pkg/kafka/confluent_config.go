@@ -225,6 +225,26 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 			return nil, err
 		}
 	}
+	if writerConfig.QueueBufferingMaxMessages > 0 {
+		if err := setConfluentConfigValue(config, "queue.buffering.max.messages", writerConfig.QueueBufferingMaxMessages); err != nil {
+			return nil, err
+		}
+	}
+	if writerConfig.QueueBufferingMaxKbytes > 0 {
+		if err := setConfluentConfigValue(config, "queue.buffering.max.kbytes", writerConfig.QueueBufferingMaxKbytes); err != nil {
+			return nil, err
+		}
+	}
+	if writerConfig.MessageMaxBytes > 0 {
+		if err := setConfluentConfigValue(config, "message.max.bytes", writerConfig.MessageMaxBytes); err != nil {
+			return nil, err
+		}
+	}
+	if writerConfig.CompressionLevel != 0 {
+		if err := setConfluentConfigValue(config, "compression.level", writerConfig.CompressionLevel); err != nil {
+			return nil, err
+		}
+	}
 	if writerConfig.BatchTimeout > 0 {
 		if err := setConfluentConfigValue(
 			config,
@@ -248,6 +268,29 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 			config,
 			"socket.timeout.ms",
 			int(writerConfig.ReadTimeout.Milliseconds()),
+		); err != nil {
+			return nil, err
+		}
+	}
+	if writerConfig.RequestTimeout > 0 {
+		if err := setConfluentConfigValue(
+			config,
+			"request.timeout.ms",
+			int(writerConfig.RequestTimeout.Milliseconds()),
+		); err != nil {
+			return nil, err
+		}
+	}
+	if writerConfig.SocketKeepAlive {
+		if err := setConfluentConfigValue(config, "socket.keepalive.enable", true); err != nil {
+			return nil, err
+		}
+	}
+	if writerConfig.MetadataMaxAge > 0 {
+		if err := setConfluentConfigValue(
+			config,
+			"metadata.max.age.ms",
+			int(writerConfig.MetadataMaxAge.Milliseconds()),
 		); err != nil {
 			return nil, err
 		}
@@ -282,6 +325,30 @@ func readerConfigToConfluentConfigMap(readerConfig *ReaderConfig) (ckafka.Config
 		return nil, err
 	}
 
+	queuedMinMessages := readerConfig.QueuedMinMessages
+	if queuedMinMessages <= 0 {
+		queuedMinMessages = readerConfig.QueueCapacity
+	}
+	if queuedMinMessages > 0 {
+		if err := setConfluentConfigValue(config, "queued.min.messages", queuedMinMessages); err != nil {
+			return nil, err
+		}
+	}
+	if readerConfig.QueuedMaxMessagesKbytes > 0 {
+		if err := setConfluentConfigValue(config, "queued.max.messages.kbytes", readerConfig.QueuedMaxMessagesKbytes); err != nil {
+			return nil, err
+		}
+	}
+	if readerConfig.FetchMessageMaxBytes > 0 {
+		if err := setConfluentConfigValue(config, "fetch.message.max.bytes", readerConfig.FetchMessageMaxBytes); err != nil {
+			return nil, err
+		}
+	}
+	if readerConfig.MaxPartitionFetchBytes > 0 {
+		if err := setConfluentConfigValue(config, "max.partition.fetch.bytes", readerConfig.MaxPartitionFetchBytes); err != nil {
+			return nil, err
+		}
+	}
 	if readerConfig.MinBytes > 0 {
 		if err := setConfluentConfigValue(config, "fetch.min.bytes", readerConfig.MinBytes); err != nil {
 			return nil, err
@@ -301,11 +368,29 @@ func readerConfigToConfluentConfigMap(readerConfig *ReaderConfig) (ckafka.Config
 			return nil, err
 		}
 	}
+	if readerConfig.MaxPollInterval.Duration > 0 {
+		if err := setConfluentConfigValue(
+			config,
+			"max.poll.interval.ms",
+			int(readerConfig.MaxPollInterval.Milliseconds()),
+		); err != nil {
+			return nil, err
+		}
+	}
 	if readerConfig.SessionTimeout > 0 {
 		if err := setConfluentConfigValue(
 			config,
 			"session.timeout.ms",
 			int(readerConfig.SessionTimeout.Milliseconds()),
+		); err != nil {
+			return nil, err
+		}
+	}
+	if readerConfig.RebalanceTimeout > 0 {
+		if err := setConfluentConfigValue(
+			config,
+			"rebalance.timeout.ms",
+			int(readerConfig.RebalanceTimeout.Milliseconds()),
 		); err != nil {
 			return nil, err
 		}
@@ -324,6 +409,20 @@ func readerConfigToConfluentConfigMap(readerConfig *ReaderConfig) (ckafka.Config
 			config,
 			"auto.commit.interval.ms",
 			int(readerConfig.CommitInterval.Milliseconds()),
+		); err != nil {
+			return nil, err
+		}
+	}
+	if readerConfig.SocketKeepAlive {
+		if err := setConfluentConfigValue(config, "socket.keepalive.enable", true); err != nil {
+			return nil, err
+		}
+	}
+	if readerConfig.MetadataMaxAge > 0 {
+		if err := setConfluentConfigValue(
+			config,
+			"metadata.max.age.ms",
+			int(readerConfig.MetadataMaxAge.Milliseconds()),
 		); err != nil {
 			return nil, err
 		}
@@ -379,6 +478,20 @@ func connectionConfigToConfluentConfigMap(connectionConfig *ConnectionConfig) (c
 
 	if err := applyConfluentSecurityConfig(config, connectionConfig.SASL, connectionConfig.TLS); err != nil {
 		return nil, err
+	}
+	if connectionConfig.SocketKeepAlive {
+		if err := setConfluentConfigValue(config, "socket.keepalive.enable", true); err != nil {
+			return nil, err
+		}
+	}
+	if connectionConfig.MetadataMaxAge > 0 {
+		if err := setConfluentConfigValue(
+			config,
+			"metadata.max.age.ms",
+			int(connectionConfig.MetadataMaxAge.Milliseconds()),
+		); err != nil {
+			return nil, err
+		}
 	}
 
 	return config, nil

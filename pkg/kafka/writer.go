@@ -36,22 +36,29 @@ var supportedBalancers = map[string]struct{}{
 }
 
 type WriterConfig struct {
-	AutoCreateTopic bool            `mapstructure:"autoCreateTopic"`
-	ConnectLogger   bool            `mapstructure:"connectLogger"`
-	MaxAttempts     int             `mapstructure:"maxAttempts"`
-	BatchSize       int             `mapstructure:"batchSize"`
-	BatchBytes      int             `mapstructure:"batchBytes"`
-	RequiredAcks    int             `mapstructure:"requiredAcks"`
-	Topic           string          `mapstructure:"topic"`
-	Balancer        string          `mapstructure:"-"`
-	BalancerFunc    BalancerKeyFunc `mapstructure:"-"`
-	Compression     string          `mapstructure:"compression"`
-	Brokers         []string        `mapstructure:"brokers"`
-	BatchTimeout    time.Duration   `mapstructure:"batchTimeout"`
-	ReadTimeout     time.Duration   `mapstructure:"readTimeout"`
-	WriteTimeout    time.Duration   `mapstructure:"writeTimeout"`
-	SASL            SASLConfig      `mapstructure:"sasl"`
-	TLS             TLSConfig       `mapstructure:"tls"`
+	AutoCreateTopic           bool            `mapstructure:"autoCreateTopic" json:"autoCreateTopic"`
+	ConnectLogger             bool            `mapstructure:"connectLogger" json:"connectLogger"`
+	MaxAttempts               int             `mapstructure:"maxAttempts" json:"maxAttempts"`
+	BatchSize                 int             `mapstructure:"batchSize" json:"batchSize"`
+	BatchBytes                int             `mapstructure:"batchBytes" json:"batchBytes"`
+	QueueBufferingMaxMessages int             `mapstructure:"queueBufferingMaxMessages" json:"queueBufferingMaxMessages"`
+	QueueBufferingMaxKbytes   int             `mapstructure:"queueBufferingMaxKbytes" json:"queueBufferingMaxKbytes"`
+	MessageMaxBytes           int             `mapstructure:"messageMaxBytes" json:"messageMaxBytes"`
+	CompressionLevel          int             `mapstructure:"compressionLevel" json:"compressionLevel"`
+	RequiredAcks              int             `mapstructure:"requiredAcks" json:"requiredAcks"`
+	Topic                     string          `mapstructure:"topic" json:"topic"`
+	Balancer                  string          `mapstructure:"-" json:"-"`
+	BalancerFunc              BalancerKeyFunc `mapstructure:"-" json:"-"`
+	Compression               string          `mapstructure:"compression" json:"compression"`
+	Brokers                   []string        `mapstructure:"brokers" json:"brokers"`
+	BatchTimeout              time.Duration   `mapstructure:"batchTimeout" json:"batchTimeout"`
+	ReadTimeout               time.Duration   `mapstructure:"readTimeout" json:"readTimeout"`
+	WriteTimeout              time.Duration   `mapstructure:"writeTimeout" json:"writeTimeout"`
+	RequestTimeout            time.Duration   `mapstructure:"requestTimeout" json:"requestTimeout"`
+	SocketKeepAlive           bool            `mapstructure:"socketKeepAlive" json:"socketKeepAlive"`
+	MetadataMaxAge            time.Duration   `mapstructure:"metadataMaxAge" json:"metadataMaxAge"`
+	SASL                      SASLConfig      `mapstructure:"sasl" json:"sasl"`
+	TLS                       TLSConfig       `mapstructure:"tls" json:"tls"`
 }
 
 func (c *WriterConfig) Parse(m map[string]any, runtime *sobek.Runtime) error {

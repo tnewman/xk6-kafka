@@ -145,9 +145,16 @@ export interface WriterConfig {
   batchSize: number;
   batchBytes: number;
   batchTimeout: number;
+  queueBufferingMaxMessages?: number;
+  queueBufferingMaxKbytes?: number;
+  messageMaxBytes?: number;
+  compressionLevel?: number;
   readTimeout: number;
   requiredAcks: number;
   writeTimeout: number;
+  requestTimeout?: number;
+  socketKeepAlive?: boolean;
+  metadataMaxAge?: number;
   compression: COMPRESSION_CODECS;
   sasl: SASLConfig;
   tls: TLSConfig;
@@ -198,10 +205,15 @@ export interface ReaderConfig {
   topic: string;
   partition: number;
   queueCapacity: number;
+  queuedMinMessages?: number;
+  queuedMaxMessagesKbytes?: number;
+  fetchMessageMaxBytes?: number;
+  maxPartitionFetchBytes?: number;
   minBytes: number;
   maxBytes: number;
   readBatchTimeout: number;
   maxWait: string;
+  maxPollInterval?: string | number;
   readLagInterval: number;
   groupBalancers: GROUP_BALANCERS[];
   heartbeatInterval: number;
@@ -219,6 +231,8 @@ export interface ReaderConfig {
   maxAttempts: number;
   isolationLevel: ISOLATION_LEVEL;
   offset: number;
+  socketKeepAlive?: boolean;
+  metadataMaxAge?: number;
   sasl: SASLConfig;
   tls: TLSConfig;
 }
@@ -242,6 +256,8 @@ export interface ConsumeConfig {
 export interface ConnectionConfig {
   address?: string;
   brokers?: string[];
+  socketKeepAlive?: boolean;
+  metadataMaxAge?: number;
   sasl: SASLConfig;
   tls: TLSConfig;
 }
