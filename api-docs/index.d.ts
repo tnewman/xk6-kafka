@@ -204,7 +204,8 @@ export interface ReaderConfig {
   groupTopics: string[];
   topic: string;
   partition: number;
-  queueCapacity: number;
+  /** @deprecated Use `queuedMinMessages` or `queuedMaxMessagesKbytes` instead. */
+  queueCapacity?: number;
   queuedMinMessages?: number;
   queuedMaxMessagesKbytes?: number;
   fetchMessageMaxBytes?: number;

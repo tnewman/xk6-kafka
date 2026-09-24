@@ -40,7 +40,7 @@ type ReaderConfig struct {
 	WatchPartitionChanges  bool          `json:"watchPartitionChanges"`
 	ConnectLogger          bool          `json:"connectLogger"`
 	Partition              int           `json:"partition"`
-	QueueCapacity          int           `json:"queueCapacity"`
+	QueueCapacity          int           `json:"queueCapacity"` // deprecated, do not use
 	QueuedMinMessages      int           `json:"queuedMinMessages"`
 	QueuedMaxMessagesKbytes int          `json:"queuedMaxMessagesKbytes"`
 	FetchMessageMaxBytes   int           `json:"fetchMessageMaxBytes"`
