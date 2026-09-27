@@ -331,9 +331,9 @@ func TestWriterConfigParse(t *testing.T) {
 			"topic":           "test-topic",
 			"compression":     codecGzip,
 			"brokers":         []string{"localhost:9092"},
-			"batchTimeout":    Duration{time.Second * 10},
-			"readTimeout":     Duration{time.Second * 30},
-			"writeTimeout":    Duration{time.Second * 30},
+			"batchTimeout":    time.Second * 10,
+			"readTimeout":     time.Second * 30,
+			"writeTimeout":    time.Second * 30,
 			"sasl": map[string]any{
 				"username":   "test-user",
 				"password":   "test-password",
