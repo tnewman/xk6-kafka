@@ -98,7 +98,7 @@ Defined in: [index.d.ts:150](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 ### metadataMaxAge?
 
-> `optional` **metadataMaxAge?**: `number`
+> `optional` **metadataMaxAge?**: `string`
 
 Defined in: [index.d.ts:157](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L157)
 
@@ -130,7 +130,7 @@ Defined in: [index.d.ts:152](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 ### requestTimeout?
 
-> `optional` **requestTimeout?**: `number`
+> `optional` **requestTimeout?**: `string`
 
 Defined in: [index.d.ts:155](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L155)
 

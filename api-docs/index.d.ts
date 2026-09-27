@@ -152,9 +152,9 @@ export interface WriterConfig {
   readTimeout: number;
   requiredAcks: number;
   writeTimeout: number;
-  requestTimeout?: number;
+  requestTimeout?: string;
   socketKeepAlive?: boolean;
-  metadataMaxAge?: number;
+  metadataMaxAge?: string;
   compression: COMPRESSION_CODECS;
   sasl: SASLConfig;
   tls: TLSConfig;
@@ -231,7 +231,7 @@ export interface ReaderConfig {
   isolationLevel: ISOLATION_LEVEL;
   offset: number;
   socketKeepAlive?: boolean;
-  metadataMaxAge?: number;
+  metadataMaxAge?: string;
   sasl: SASLConfig;
   tls: TLSConfig;
 }
@@ -256,7 +256,7 @@ export interface ConnectionConfig {
   address?: string;
   brokers?: string[];
   socketKeepAlive?: boolean;
-  metadataMaxAge?: number;
+  metadataMaxAge?: string;
   sasl: SASLConfig;
   tls: TLSConfig;
 }

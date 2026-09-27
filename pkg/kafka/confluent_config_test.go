@@ -269,17 +269,17 @@ func TestWriterConfigToConfluentConfigMap_Table(t *testing.T) {
 		t.Parallel()
 		cfg, err := writerConfigToConfluentConfigMap(&WriterConfig{
 			Brokers:                   []string{"localhost:9092"},
-			WriteTimeout:              2 * time.Second,
-			ReadTimeout:               3 * time.Second,
+			WriteTimeout:              Duration{Duration: 2 * time.Second},
+			ReadTimeout:               Duration{Duration: 3 * time.Second},
 			RequiredAcks:              1,
-			BatchTimeout:              100 * time.Millisecond,
+			BatchTimeout:              Duration{Duration: 100 * time.Millisecond},
 			QueueBufferingMaxMessages: 50000,
 			QueueBufferingMaxKbytes:   512000,
 			MessageMaxBytes:           2048000,
 			CompressionLevel:          new(5),
-			RequestTimeout:            60 * time.Second,
+			RequestTimeout:            Duration{Duration: 60 * time.Second},
 			SocketKeepAlive:           true,
-			MetadataMaxAge:            180 * time.Second,
+			MetadataMaxAge:            Duration{Duration: 180 * time.Second},
 		})
 		require.NoError(t, err)
 		assert.Equal(t, 2000, cfg["message.timeout.ms"])
