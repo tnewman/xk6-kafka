@@ -126,7 +126,7 @@ Defined in: [index.d.ts:210](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 ### maxPollInterval?
 
-> `optional` **maxPollInterval?**: `string` \| `number`
+> `optional` **maxPollInterval?**: `string`
 
 Defined in: [index.d.ts:215](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L215)
 

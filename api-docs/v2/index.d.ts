@@ -212,7 +212,7 @@ export interface ReaderConfig {
   maxBytes: number;
   readBatchTimeout: number;
   maxWait: string;
-  maxPollInterval?: string | number;
+  maxPollInterval?: string;
   readLagInterval: number;
   groupBalancers: GROUP_BALANCERS[];
   heartbeatInterval: number;
