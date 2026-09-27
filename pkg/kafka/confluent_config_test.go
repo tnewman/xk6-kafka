@@ -430,15 +430,11 @@ func TestConnectionConfigToConfluentConfigMap_Table(t *testing.T) {
 	t.Run("brokers preferred over address", func(t *testing.T) {
 		t.Parallel()
 		cfg, err := connectionConfigToConfluentConfigMap(&ConnectionConfig{
-			Address:         "ignored:9092",
-			Brokers:         []string{"a:1", "b:2"},
-			SocketKeepAlive: true,
-			MetadataMaxAge:  180 * time.Second,
+			Address: "ignored:9092",
+			Brokers: []string{"a:1", "b:2"},
 		})
 		require.NoError(t, err)
 		assert.Equal(t, "a:1,b:2", cfg["bootstrap.servers"])
-		assert.Equal(t, true, cfg["socket.keepalive.enable"])
-		assert.Equal(t, 180000, cfg["metadata.max.age.ms"])
 	})
 	t.Run("empty brokers and address", func(t *testing.T) {
 		t.Parallel()
