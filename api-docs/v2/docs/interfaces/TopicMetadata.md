@@ -4,7 +4,7 @@
 
 # Interface: TopicMetadata
 
-Defined in: [index.d.ts:309](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L309)
+Defined in: [index.d.ts:307](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L307)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [index.d.ts:309](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **error**: `any`
 
-Defined in: [index.d.ts:312](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L312)
+Defined in: [index.d.ts:310](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L310)
 
 ---
 
@@ -20,7 +20,7 @@ Defined in: [index.d.ts:312](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **partitions**: [`PartitionInfo`](PartitionInfo.md)[]
 
-Defined in: [index.d.ts:311](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L311)
+Defined in: [index.d.ts:309](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L309)
 
 ---
 
@@ -28,4 +28,4 @@ Defined in: [index.d.ts:311](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **topic**: `string`
 
-Defined in: [index.d.ts:310](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L310)
+Defined in: [index.d.ts:308](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L308)

@@ -410,15 +410,6 @@ func TestReaderConfigToConfluentConfigMap_Table(t *testing.T) {
 		_, hasGroup := cfg["group.id"]
 		assert.False(t, hasGroup)
 	})
-	t.Run("queue capacity fallback to queued.min.messages", func(t *testing.T) {
-		t.Parallel()
-		cfg, err := readerConfigToConfluentConfigMap(&ReaderConfig{
-			Brokers:       []string{"localhost:9092"},
-			QueueCapacity: 500,
-		})
-		require.NoError(t, err)
-		assert.Equal(t, 500, cfg["queued.min.messages"])
-	})
 }
 
 func TestConnectionConfigToConfluentConfigMap_Table(t *testing.T) {

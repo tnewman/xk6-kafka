@@ -4,7 +4,7 @@
 
 # Interface: ConfigEntry
 
-Defined in: [index.d.ts:273](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L273)
+Defined in: [index.d.ts:271](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L271)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [index.d.ts:273](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **configName**: `string`
 
-Defined in: [index.d.ts:274](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L274)
+Defined in: [index.d.ts:272](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L272)
 
 ---
 
@@ -20,4 +20,4 @@ Defined in: [index.d.ts:274](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **configValue**: `string`
 
-Defined in: [index.d.ts:275](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L275)
+Defined in: [index.d.ts:273](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L273)

@@ -334,9 +334,6 @@ func readerConfigToConfluentConfigMap(readerConfig *ReaderConfig) (ckafka.Config
 	}
 
 	queuedMinMessages := readerConfig.QueuedMinMessages
-	if queuedMinMessages <= 0 {
-		queuedMinMessages = readerConfig.QueueCapacity
-	}
 	if queuedMinMessages > 0 {
 		if err := setConfluentConfigValue(config, "queued.min.messages", queuedMinMessages); err != nil {
 			return nil, err

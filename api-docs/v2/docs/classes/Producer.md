@@ -4,7 +4,7 @@
 
 # Class: Producer
 
-Defined in: [index.d.ts:407](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L407)
+Defined in: [index.d.ts:405](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L405)
 
 ## Classdesc
 
@@ -40,7 +40,7 @@ producer.close();
 
 > **new Producer**(`writerConfig`): `Producer`
 
-Defined in: [index.d.ts:408](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L408)
+Defined in: [index.d.ts:406](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L406)
 
 #### Parameters
 
@@ -58,7 +58,7 @@ Defined in: [index.d.ts:408](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **close**(): `void`
 
-Defined in: [index.d.ts:412](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L412)
+Defined in: [index.d.ts:410](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L410)
 
 #### Returns
 
@@ -70,7 +70,7 @@ Defined in: [index.d.ts:412](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **flush**(): `void`
 
-Defined in: [index.d.ts:410](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L410)
+Defined in: [index.d.ts:408](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L408)
 
 #### Returns
 
@@ -82,7 +82,7 @@ Defined in: [index.d.ts:410](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **produce**(`produceConfig`): `void`
 
-Defined in: [index.d.ts:409](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L409)
+Defined in: [index.d.ts:407](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L407)
 
 #### Parameters
 
@@ -100,7 +100,7 @@ Defined in: [index.d.ts:409](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 > **stats**(): [`ProducerStats`](../interfaces/ProducerStats.md)
 
-Defined in: [index.d.ts:411](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L411)
+Defined in: [index.d.ts:409](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L409)
 
 #### Returns
 
