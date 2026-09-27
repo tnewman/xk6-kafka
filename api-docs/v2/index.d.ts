@@ -153,8 +153,8 @@ export interface WriterConfig {
   requiredAcks: number;
   writeTimeout: number;
   requestTimeout?: number;
-  socketKeepAlive?: number;
-  metadataMaxAge?: string;
+  socketKeepAlive?: boolean;
+  metadataMaxAge?: number;
   compression: COMPRESSION_CODECS;
   sasl: SASLConfig;
   tls: TLSConfig;

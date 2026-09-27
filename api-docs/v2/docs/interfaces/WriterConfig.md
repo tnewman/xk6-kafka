@@ -98,7 +98,7 @@ Defined in: [index.d.ts:150](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 ### metadataMaxAge?
 
-> `optional` **metadataMaxAge?**: `string`
+> `optional` **metadataMaxAge?**: `number`
 
 Defined in: [index.d.ts:157](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L157)
 
