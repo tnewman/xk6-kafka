@@ -253,7 +253,7 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 			return nil, err
 		}
 	}
-	if writerConfig.BatchTimeout.Duration > 0 {
+	if writerConfig.BatchTimeout > 0 {
 		if err := setConfluentConfigValue(
 			config,
 			"linger.ms",
@@ -262,7 +262,7 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 			return nil, err
 		}
 	}
-	if writerConfig.WriteTimeout.Duration > 0 {
+	if writerConfig.WriteTimeout > 0 {
 		if err := setConfluentConfigValue(
 			config,
 			"message.timeout.ms",
@@ -271,7 +271,7 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 			return nil, err
 		}
 	}
-	if writerConfig.ReadTimeout.Duration > 0 {
+	if writerConfig.ReadTimeout > 0 {
 		if err := setConfluentConfigValue(
 			config,
 			"socket.timeout.ms",

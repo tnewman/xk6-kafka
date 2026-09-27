@@ -269,10 +269,10 @@ func TestWriterConfigToConfluentConfigMap_Table(t *testing.T) {
 		t.Parallel()
 		cfg, err := writerConfigToConfluentConfigMap(&WriterConfig{
 			Brokers:                   []string{"localhost:9092"},
-			WriteTimeout:              Duration{Duration: 2 * time.Second},
-			ReadTimeout:               Duration{Duration: 3 * time.Second},
+			WriteTimeout:              2 * time.Second,
+			ReadTimeout:               3 * time.Second,
 			RequiredAcks:              1,
-			BatchTimeout:              Duration{Duration: 100 * time.Millisecond},
+			BatchTimeout:              100 * time.Millisecond,
 			QueueBufferingMaxMessages: 50000,
 			QueueBufferingMaxKbytes:   512000,
 			MessageMaxBytes:           2048000,

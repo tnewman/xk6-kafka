@@ -51,9 +51,9 @@ type WriterConfig struct {
 	BalancerFunc              BalancerKeyFunc `json:"-"                         mapstructure:"-"`
 	Compression               string          `json:"compression"               mapstructure:"compression"`
 	Brokers                   []string        `json:"brokers"                   mapstructure:"brokers"`
-	BatchTimeout              Duration        `json:"batchTimeout"              mapstructure:"batchTimeout"`
-	ReadTimeout               Duration        `json:"readTimeout"               mapstructure:"readTimeout"`
-	WriteTimeout              Duration        `json:"writeTimeout"              mapstructure:"writeTimeout"`
+	BatchTimeout              time.Duration   `mapstructure:"batchTimeout"`
+	ReadTimeout               time.Duration   `mapstructure:"readTimeout"`
+	WriteTimeout              time.Duration   `mapstructure:"writeTimeout"`
 	RequestTimeout            Duration        `json:"requestTimeout"            mapstructure:"requestTimeout"`
 	SocketKeepAlive           bool            `json:"socketKeepAlive"           mapstructure:"socketKeepAlive"`
 	MetadataMaxAge            Duration        `json:"metadataMaxAge"            mapstructure:"metadataMaxAge"`
