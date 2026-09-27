@@ -36,29 +36,30 @@ var supportedBalancers = map[string]struct{}{
 }
 
 type WriterConfig struct {
-	AutoCreateTopic           bool            `json:"autoCreateTopic"           mapstructure:"autoCreateTopic"`
-	ConnectLogger             bool            `json:"connectLogger"             mapstructure:"connectLogger"`
-	MaxAttempts               int             `json:"maxAttempts"               mapstructure:"maxAttempts"`
-	BatchSize                 int             `json:"batchSize"                 mapstructure:"batchSize"`
-	BatchBytes                int             `json:"batchBytes"                mapstructure:"batchBytes"`
-	QueueBufferingMaxMessages int             `json:"queueBufferingMaxMessages" mapstructure:"queueBufferingMaxMessages"`
-	QueueBufferingMaxKbytes   int             `json:"queueBufferingMaxKbytes"   mapstructure:"queueBufferingMaxKbytes"`
-	MessageMaxBytes           int             `json:"messageMaxBytes"           mapstructure:"messageMaxBytes"`
-	CompressionLevel          *int            `json:"compressionLevel"          mapstructure:"compressionLevel"`
-	RequiredAcks              int             `json:"requiredAcks"              mapstructure:"requiredAcks"`
-	Topic                     string          `json:"topic"                     mapstructure:"topic"`
-	Balancer                  string          `json:"-"                         mapstructure:"-"`
-	BalancerFunc              BalancerKeyFunc `json:"-"                         mapstructure:"-"`
-	Compression               string          `json:"compression"               mapstructure:"compression"`
-	Brokers                   []string        `json:"brokers"                   mapstructure:"brokers"`
-	BatchTimeout              time.Duration   `mapstructure:"batchTimeout"`
-	ReadTimeout               time.Duration   `mapstructure:"readTimeout"`
-	WriteTimeout              time.Duration   `mapstructure:"writeTimeout"`
-	RequestTimeout            Duration        `json:"requestTimeout"            mapstructure:"requestTimeout"`
-	SocketKeepAlive           bool            `json:"socketKeepAlive"           mapstructure:"socketKeepAlive"`
-	MetadataMaxAge            Duration        `json:"metadataMaxAge"            mapstructure:"metadataMaxAge"`
-	SASL                      SASLConfig      `json:"sasl"                      mapstructure:"sasl"`
-	TLS                       TLSConfig       `json:"tls"                       mapstructure:"tls"`
+	AutoCreateTopic bool            `mapstructure:"autoCreateTopic"`
+	ConnectLogger   bool            `mapstructure:"connectLogger"`
+	MaxAttempts     int             `mapstructure:"maxAttempts"`
+	BatchSize       int             `mapstructure:"batchSize"`
+	BatchBytes      int             `mapstructure:"batchBytes"`
+	RequiredAcks    int             `mapstructure:"requiredAcks"`
+	Topic           string          `mapstructure:"topic"`
+	Balancer        string          `mapstructure:"-"`
+	BalancerFunc    BalancerKeyFunc `mapstructure:"-"`
+	Compression     string          `mapstructure:"compression"`
+	Brokers         []string        `mapstructure:"brokers"`
+	BatchTimeout    time.Duration   `mapstructure:"batchTimeout"`
+	ReadTimeout     time.Duration   `mapstructure:"readTimeout"`
+	WriteTimeout    time.Duration   `mapstructure:"writeTimeout"`
+	SASL            SASLConfig      `mapstructure:"sasl"`
+	TLS             TLSConfig       `mapstructure:"tls"`
+
+	QueueBufferingMaxMessages int      `mapstructure:"queueBufferingMaxMessages"`
+	QueueBufferingMaxKbytes   int      `mapstructure:"queueBufferingMaxKbytes"`
+	MessageMaxBytes           int      `mapstructure:"messageMaxBytes"`
+	CompressionLevel          *int     `mapstructure:"compressionLevel"`
+	RequestTimeout            Duration `mapstructure:"requestTimeout"`
+	SocketKeepAlive           bool     `mapstructure:"socketKeepAlive"`
+	MetadataMaxAge            Duration `mapstructure:"metadataMaxAge"`
 }
 
 func (c *WriterConfig) Parse(m map[string]any, runtime *sobek.Runtime) error {
