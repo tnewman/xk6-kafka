@@ -130,7 +130,7 @@ Defined in: [index.d.ts:152](https://github.com/mostafa/xk6-kafka/blob/main/api-
 
 ### requestTimeout?
 
-> `optional` **requestTimeout?**: `string`
+> `optional` **requestTimeout?**: `number`
 
 Defined in: [index.d.ts:155](https://github.com/mostafa/xk6-kafka/blob/main/api-docs/v2/index.d.ts#L155)
 
