@@ -9,13 +9,13 @@ import (
 )
 
 type ConnectionConfig struct {
-	Address         string     `json:"address"`
-	Brokers         []string   `json:"brokers"`
-	SocketKeepAlive bool       `json:"socketKeepAlive"`
-	SASL            SASLConfig `json:"sasl"`
-	TLS             TLSConfig  `json:"tls"`
+	Address string     `json:"address"`
+	Brokers []string   `json:"brokers"`
+	SASL    SASLConfig `json:"sasl"`
+	TLS     TLSConfig  `json:"tls"`
 
-	MetadataMaxAge time.Duration `json:"metadataMaxAge"`
+	SocketKeepAlive bool          `json:"socketKeepAlive"`
+	MetadataMaxAge  time.Duration `json:"metadataMaxAge"`
 }
 
 func (k *Kafka) adminClientClass(call sobek.ConstructorCall) *sobek.Object {
