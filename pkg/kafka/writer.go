@@ -44,7 +44,7 @@ type WriterConfig struct {
 	QueueBufferingMaxMessages int             `json:"queueBufferingMaxMessages" mapstructure:"queueBufferingMaxMessages"`
 	QueueBufferingMaxKbytes   int             `json:"queueBufferingMaxKbytes"   mapstructure:"queueBufferingMaxKbytes"`
 	MessageMaxBytes           int             `json:"messageMaxBytes"           mapstructure:"messageMaxBytes"`
-	CompressionLevel          int             `json:"compressionLevel"          mapstructure:"compressionLevel"`
+	CompressionLevel          *int            `json:"compressionLevel"          mapstructure:"compressionLevel"`
 	RequiredAcks              int             `json:"requiredAcks"              mapstructure:"requiredAcks"`
 	Topic                     string          `json:"topic"                     mapstructure:"topic"`
 	Balancer                  string          `json:"-"                         mapstructure:"-"`

@@ -276,7 +276,7 @@ func TestWriterConfigToConfluentConfigMap_Table(t *testing.T) {
 			QueueBufferingMaxMessages: 50000,
 			QueueBufferingMaxKbytes:   512000,
 			MessageMaxBytes:           2048000,
-			CompressionLevel:          5,
+			CompressionLevel:          new(5),
 			RequestTimeout:            60 * time.Second,
 			SocketKeepAlive:           true,
 			MetadataMaxAge:            180 * time.Second,

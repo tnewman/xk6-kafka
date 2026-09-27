@@ -248,8 +248,8 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 			return nil, err
 		}
 	}
-	if writerConfig.CompressionLevel != 0 {
-		if err := setConfluentConfigValue(config, "compression.level", writerConfig.CompressionLevel); err != nil {
+	if writerConfig.CompressionLevel != nil {
+		if err := setConfluentConfigValue(config, "compression.level", *writerConfig.CompressionLevel); err != nil {
 			return nil, err
 		}
 	}
