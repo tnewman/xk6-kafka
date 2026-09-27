@@ -51,8 +51,8 @@ const producer = new Producer({
   tls: tlsConfig,
   // Recommended for Azure Event Hubs
   socketKeepAlive: true,
-  metadataMaxAge: 180000,
-  requestTimeout: 60000,
+  metadataMaxAge: "180000ms",
+  requestTimeout: "60000ms",
   compression: CODEC_GZIP,
 });
 
@@ -68,10 +68,10 @@ const consumer = new Consumer({
   maxWait: "30s",
   // Recommended for Azure Event Hubs
   socketKeepAlive: true,
-  metadataMaxAge: 180000,
-  sessionTimeout: 30000,
-  heartbeatInterval: 3000,
-  maxPollInterval: 300000,
+  metadataMaxAge: "180000ms",
+  sessionTimeout: "30000ms",
+  heartbeatInterval: "3000ms",
+  maxPollInterval: "300000ms",
 });
 
 const adminClient = new AdminClient({
@@ -80,7 +80,7 @@ const adminClient = new AdminClient({
   tls: tlsConfig,
   // Recommended for Azure Event Hubs
   socketKeepAlive: true,
-  metadataMaxAge: 180000,
+  metadataMaxAge: "180000ms",
 });
 
 const schemaRegistry = new SchemaRegistry();
