@@ -280,7 +280,7 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 			return nil, err
 		}
 	}
-	if writerConfig.RequestTimeout.Duration > 0 {
+	if writerConfig.RequestTimeout > 0 {
 		if err := setConfluentConfigValue(
 			config,
 			"request.timeout.ms",
@@ -294,7 +294,7 @@ func writerConfigToConfluentConfigMap(writerConfig *WriterConfig) (ckafka.Config
 			return nil, err
 		}
 	}
-	if writerConfig.MetadataMaxAge.Duration > 0 {
+	if writerConfig.MetadataMaxAge > 0 {
 		if err := setConfluentConfigValue(
 			config,
 			"metadata.max.age.ms",
@@ -385,7 +385,7 @@ func readerConfigToConfluentConfigMap(readerConfig *ReaderConfig) (ckafka.Config
 			return nil, err
 		}
 	}
-	if readerConfig.MaxPollInterval.Duration > 0 {
+	if readerConfig.MaxPollInterval > 0 {
 		if err := setConfluentConfigValue(
 			config,
 			"max.poll.interval.ms",

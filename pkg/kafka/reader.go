@@ -72,7 +72,7 @@ type ReaderConfig struct {
 	QueuedMaxMessagesKbytes int           `json:"queuedMaxMessagesKbytes"`
 	FetchMessageMaxBytes    int           `json:"fetchMessageMaxBytes"`
 	MaxPartitionFetchBytes  int           `json:"maxPartitionFetchBytes"`
-	MaxPollInterval         Duration      `json:"maxPollInterval"`
+	MaxPollInterval         time.Duration `json:"maxPollInterval"`
 	SocketKeepAlive         bool          `json:"socketKeepAlive"`
 	MetadataMaxAge          time.Duration `json:"metadataMaxAge"`
 }

@@ -277,9 +277,9 @@ func TestWriterConfigToConfluentConfigMap_Table(t *testing.T) {
 			QueueBufferingMaxKbytes:   512000,
 			MessageMaxBytes:           2048000,
 			CompressionLevel:          new(5),
-			RequestTimeout:            Duration{Duration: 60 * time.Second},
+			RequestTimeout:            60 * time.Second,
 			SocketKeepAlive:           true,
-			MetadataMaxAge:            Duration{Duration: 180 * time.Second},
+			MetadataMaxAge:            180 * time.Second,
 		})
 		require.NoError(t, err)
 		assert.Equal(t, 2000, cfg["message.timeout.ms"])
@@ -390,7 +390,7 @@ func TestReaderConfigToConfluentConfigMap_Table(t *testing.T) {
 			QueuedMaxMessagesKbytes: 4096,
 			FetchMessageMaxBytes:    1048576,
 			MaxPartitionFetchBytes:  1048576,
-			MaxPollInterval:         Duration{Duration: 300 * time.Second},
+			MaxPollInterval:         300 * time.Second,
 			RebalanceTimeout:        45 * time.Second,
 			SocketKeepAlive:         true,
 			MetadataMaxAge:          180 * time.Second,

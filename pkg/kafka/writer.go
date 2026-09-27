@@ -53,13 +53,13 @@ type WriterConfig struct {
 	SASL            SASLConfig      `mapstructure:"sasl"`
 	TLS             TLSConfig       `mapstructure:"tls"`
 
-	QueueBufferingMaxMessages int      `mapstructure:"queueBufferingMaxMessages"`
-	QueueBufferingMaxKbytes   int      `mapstructure:"queueBufferingMaxKbytes"`
-	MessageMaxBytes           int      `mapstructure:"messageMaxBytes"`
-	CompressionLevel          *int     `mapstructure:"compressionLevel"`
-	RequestTimeout            Duration `mapstructure:"requestTimeout"`
-	SocketKeepAlive           bool     `mapstructure:"socketKeepAlive"`
-	MetadataMaxAge            Duration `mapstructure:"metadataMaxAge"`
+	QueueBufferingMaxMessages int           `mapstructure:"queueBufferingMaxMessages"`
+	QueueBufferingMaxKbytes   int           `mapstructure:"queueBufferingMaxKbytes"`
+	MessageMaxBytes           int           `mapstructure:"messageMaxBytes"`
+	CompressionLevel          *int          `mapstructure:"compressionLevel"`
+	RequestTimeout            time.Duration `mapstructure:"requestTimeout"`
+	SocketKeepAlive           bool          `mapstructure:"socketKeepAlive"`
+	MetadataMaxAge            time.Duration `mapstructure:"metadataMaxAge"`
 }
 
 func (c *WriterConfig) Parse(m map[string]any, runtime *sobek.Runtime) error {
