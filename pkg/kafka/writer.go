@@ -47,9 +47,9 @@ type WriterConfig struct {
 	BalancerFunc    BalancerKeyFunc `mapstructure:"-"`
 	Compression     string          `mapstructure:"compression"`
 	Brokers         []string        `mapstructure:"brokers"`
-	BatchTimeout    time.Duration   `mapstructure:"batchTimeout"`
-	ReadTimeout     time.Duration   `mapstructure:"readTimeout"`
-	WriteTimeout    time.Duration   `mapstructure:"writeTimeout"`
+	BatchTimeout    Duration        `mapstructure:"batchTimeout"`
+	ReadTimeout     Duration        `mapstructure:"readTimeout"`
+	WriteTimeout    Duration        `mapstructure:"writeTimeout"`
 	SASL            SASLConfig      `mapstructure:"sasl"`
 	TLS             TLSConfig       `mapstructure:"tls"`
 }
