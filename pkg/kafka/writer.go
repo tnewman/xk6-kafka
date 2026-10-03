@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/go-viper/mapstructure/v2"
 	"github.com/grafana/sobek"
 	"go.k6.io/k6/v2/js/common"
 )
@@ -59,28 +58,25 @@ func (c *WriterConfig) Parse(m map[string]any, runtime *sobek.Runtime) error {
 		return newMissingConfigError("writer config")
 	}
 
-	decoder, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{Result: c})
-	if err != nil {
-		return err
-	}
 	if m["balancer"] != nil {
 		if balancer, ok := m["balancer"].(string); ok {
 			c.Balancer = balancer
 		} else {
-			err = runtime.ExportTo(runtime.ToValue(m["balancer"]), &c.BalancerFunc)
+			err := runtime.ExportTo(runtime.ToValue(m["balancer"]), &c.BalancerFunc)
 			if err != nil {
 				return fmt.Errorf("error parsing balancerFunc: %w", err)
 			}
 		}
 	}
-	if err := decoder.Decode(m); err != nil {
-		return fmt.Errorf("failed to decode writer config: %w", err)
-	}
+
+	decodeArgumentMap(runtime, m, &c, "writer config")
+
 	if c.Balancer != "" {
 		if _, ok := supportedBalancers[c.Balancer]; !ok {
 			return fmt.Errorf("%w %q", errUnknownBalancer, c.Balancer)
 		}
 	}
+
 	return nil
 }
 
@@ -122,7 +118,12 @@ func (k *Kafka) compatProducerClass(call sobek.ConstructorCall) *sobek.Object {
 	}
 
 	writerConfigParams := exportArgumentMap(runtime, call.Arguments[0], "writer config")
-	decodeArgumentMap(runtime, writerConfigParams, &writerConfig, "writer config")
+
+	err := writerConfig.Parse(writerConfigParams, runtime)
+
+	if err != nil {
+		common.Throw(runtime, err)
+	}
 
 	if err := validateConfluentWriterCompatibility(&writerConfig); err != nil {
 		common.Throw(runtime, err)
