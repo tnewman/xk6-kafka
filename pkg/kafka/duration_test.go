@@ -25,10 +25,12 @@ func TestDurationUnmarshalNumber(t *testing.T) {
 	t.Parallel()
 	var d Duration
 
-	d.UnmarshalJSON([]byte(`42`))
+	err := d.UnmarshalJSON([]byte(`42`))
+	require.NoError(t, err)
 	require.Equal(t, time.Duration(42), d.Duration)
 
-	d.UnmarshalJSON([]byte{4, 2})
+	err = d.UnmarshalJSON([]byte{4, 2})
+	require.NoError(t, err)
 	require.Equal(t, time.Duration(42), d.Duration)
 }
 
