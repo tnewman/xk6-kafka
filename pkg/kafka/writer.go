@@ -116,19 +116,18 @@ func (k *Kafka) writerClass(call sobek.ConstructorCall) *sobek.Object {
 
 func (k *Kafka) compatProducerClass(call sobek.ConstructorCall) *sobek.Object {
 	runtime := k.vu.Runtime()
+	var writerConfig WriterConfig
 	if len(call.Arguments) == 0 {
 		common.Throw(runtime, ErrNotEnoughArguments)
 	}
 
-	m := exportArgumentMap(runtime, call.Arguments[0], "writer config")
-	var writerConfig WriterConfig
-	err := writerConfig.Parse(m, runtime)
-	if err != nil {
-		throwConfigError(runtime, newInvalidConfigError("writer config", err))
-	}
+	writerConfigParams := exportArgumentMap(runtime, call.Arguments[0], "writer config")
+	decodeArgumentMap(runtime, writerConfigParams, &writerConfig, "writer config")
+
 	if err := validateConfluentWriterCompatibility(&writerConfig); err != nil {
 		common.Throw(runtime, err)
 	}
+
 	producer, err := NewProducerFromWriterConfig(&writerConfig)
 	if err != nil {
 		common.Throw(runtime, err)

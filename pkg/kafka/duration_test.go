@@ -11,6 +11,7 @@ import (
 
 func TestDurationMarshalUnmarshalJSON(t *testing.T) {
 	t.Parallel()
+
 	d := Duration{Duration: time.Hour + 2*time.Minute}
 	b, err := json.Marshal(d)
 	require.NoError(t, err)
@@ -18,6 +19,17 @@ func TestDurationMarshalUnmarshalJSON(t *testing.T) {
 	var out Duration
 	require.NoError(t, json.Unmarshal(b, &out))
 	assert.Equal(t, d.Duration, out.Duration)
+}
+
+func TestDurationUnmarshalNumber(t *testing.T) {
+	t.Parallel()
+	var d Duration
+
+	d.UnmarshalJSON([]byte(`42`))
+	require.Equal(t, time.Duration(42), d.Duration)
+
+	d.UnmarshalJSON([]byte{4, 2})
+	require.Equal(t, time.Duration(42), d.Duration)
 }
 
 func TestDurationUnmarshalJSONErrors(t *testing.T) {
@@ -28,8 +40,4 @@ func TestDurationUnmarshalJSONErrors(t *testing.T) {
 
 	err = d.UnmarshalJSON([]byte(`"not-a-valid-duration"`))
 	require.Error(t, err)
-
-	err = d.UnmarshalJSON([]byte(`42`))
-	require.Error(t, err)
-	assert.ErrorIs(t, err, ErrInvalidDuration)
 }
