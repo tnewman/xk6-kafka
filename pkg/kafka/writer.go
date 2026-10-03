@@ -120,7 +120,6 @@ func (k *Kafka) compatProducerClass(call sobek.ConstructorCall) *sobek.Object {
 	writerConfigParams := exportArgumentMap(runtime, call.Arguments[0], "writer config")
 
 	err := writerConfig.Parse(writerConfigParams, runtime)
-
 	if err != nil {
 		common.Throw(runtime, err)
 	}
